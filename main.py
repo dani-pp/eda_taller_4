@@ -1,3 +1,7 @@
+import random
+import timeit
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -19,6 +23,7 @@ class AVLTree:
         if not node:
             return 0
         return self.height(node.left) - self.height(node.right)
+
 
     def insert(self, root, value):
         if not root:
@@ -139,6 +144,11 @@ class AVLTree:
     def insert_value(self, value):
         self.root = self.insert(self.root, value)
 
+    def insertar_random(self, cantidad):
+        for x in range(cantidad):
+            num_random = random.randint(1,100)
+            self.insert_value(num_random)
+
     def delete_value(self, value):
         self.root = self.delete(self.root, value)
 
@@ -149,11 +159,7 @@ class AVLTree:
 # Example usage:
 if __name__ == "__main__":
     tree = AVLTree()
-    tree.insert_value(10)
-    tree.insert_value(20)
-    tree.insert_value(30)
-    tree.insert_value(40)
-    tree.insert_value(50)
+    tree.insertar_random(10)
 
     print("Tree after insertion:")
     # In-order traversal to print the tree
